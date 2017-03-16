@@ -10,15 +10,15 @@ namespace Techart\MIME\Decode;
 class QuotedPrintableDecoder extends AbstractDecoder
 {
 
-	/**
-	 * Возвращает следующий элемент итератора
-	 *
-	 */
-	public function next()
-	{
-		$this->current = ($line = $this->read_line()) === null ?
-			null : \Techart\MIME::decode_qp($line);
-		$this->count++;
-	}
+    /**
+     * Возвращает следующий элемент итератора
+     *
+     */
+    public function next()
+    {
+        $this->current = ($line = $this->read_line()) === null ?
+            null : \Techart\MIME::decode_qp($line);
+        $this->count++;
+    }
 
 }
