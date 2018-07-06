@@ -309,7 +309,9 @@ class MIME
         }
         $text = preg_replace_callback(
             '/[^\x21-\x3C\x3E-\x7E]/',
-            create_function('$x', 'return strtoupper(sprintf("=%02x", ord($x[0])));'), $text
+            function($x) {
+                return strtoupper(sprintf("=%02x", ord($x[0])));
+            }, $text
         );
         return (is_null($length) || $length === 0) ? $text : preg_replace('/(.{' . ($length - 4) . '}[^=]{0,3})/', '$1' . "=\n", $text);
     }
